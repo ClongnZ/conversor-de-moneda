@@ -46,17 +46,17 @@ public class Calculo {
                     okValidacion = false;
                     System.out.println("Ingresa el valor que deseas convertir: ");
                     valor = lectura.nextDouble();
-//                    lectura.nextLine();
+                    lectura.nextLine();
                 } catch (InputMismatchException ime) {
                     System.out.println("Debe ingresar solo números.");
                     okValidacion = true;
+                    lectura.nextLine();
                 }
             } while (okValidacion == true);
             if(valor < 0){
                 System.out.println("Debe ingresar valores positivos.");
             }
         }while (valor < 0);
-        lectura.nextLine();
         return valor;
     }
 
