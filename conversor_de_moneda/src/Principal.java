@@ -31,10 +31,10 @@ public class Principal {
                     okBandera = false;
                     System.out.println(menu);
                     opcion = lectura.nextInt();
+                    lectura.nextLine();
                 }catch (InputMismatchException ime){
                     System.out.println("Opción no válida.\n");
                     okBandera = true;
-                    lectura.nextLine();
                 }
             }while (okBandera == true);
 
@@ -58,12 +58,21 @@ public class Principal {
                     conversion.hacerCalculo("COP", "USD");
                     break;
                 case 7:
+                    conversion.hacerCalculo("USD", "CLP");
+                    break;
+                case 8:
+                    conversion.hacerCalculo("CLP", "USD");
+                    break;
+                case 9:
+                    conversion.hacerCalculoEntrada();
+                    break;
+                case 0:
                     System.out.println("Fin de la aplicación...");
                     break;
                 default:
                     System.out.println("Elija una opción del menú...\n");
             }
-        }while (opcion != 7);
+        }while (opcion != 0);
 
 
 
