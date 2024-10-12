@@ -6,7 +6,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class ConsultaMoneda {
-
+    // Conecta la API para obtener consultas
     public Moneda hacerConsulta(String codigoBase, String codigoDestino){
 
         URI direccion = URI.create("https://v6.exchangerate-api.com/v6/efd9e079306fe9ed95813c67/pair/"+codigoBase+"/"+codigoDestino);

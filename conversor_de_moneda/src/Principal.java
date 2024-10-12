@@ -15,18 +15,22 @@ public class Principal {
         String menu = """
                         ***************************************************************
                         Sea bienvenido/a al Conversor de Moneda
+                        
                         1) Dólar =>> Peso argentino
                         2) Peso argentino =>> Dólar
                         3) Dólar =>> Real brasileño
                         4) Real brasileño =>> Dólar
                         5) Dólar =>> Peso colombiano
                         6) Peso colombiano =>> Dólar
-                        7) Salir
+                        7) Dólar =>> Peso chileno
+                        8) Peso chileno =>> Dólar
+                        9) Digite el código de las monedas a convertir
+                        0) Salir
                         Elija una opción válida:
                         ***************************************************************
                         """;
-        do{
-            do{
+        do{ //Elige una opción válida del menú
+            do{ // Verifica la entrada de enteros
                 try {
                     okBandera = false;
                     System.out.println(menu);
@@ -35,10 +39,11 @@ public class Principal {
                 }catch (InputMismatchException ime){
                     System.out.println("Opción no válida.\n");
                     okBandera = true;
+                    lectura.nextLine();
                 }
             }while (okBandera == true);
 
-            switch (opcion){
+            switch (opcion){ // Realiza cálculo de acuerdo a la opción seleccionada
                 case 1:
                     conversion.hacerCalculo("USD", "ARS");
                     break;
@@ -73,37 +78,6 @@ public class Principal {
                     System.out.println("Elija una opción del menú...\n");
             }
         }while (opcion != 0);
-
-
-
-
-
-
-
-//        Scanner lectura = new Scanner(System.in);
-//        ConsultaMoneda consulta = new ConsultaMoneda();
-//        String codigoBase;
-//        String codigoDestino;
-//
-//        //Prueba de conexión
-//        try{
-//            System.out.println("Moneda base: ");
-//            codigoBase = lectura.nextLine();
-//            System.out.println("Moneda destino: ");
-//            codigoDestino = lectura.nextLine();
-//
-//            Moneda moneda = consulta.hacerConsulta(codigoBase, codigoDestino);
-//            System.out.println(moneda);
-//
-//        }catch (RuntimeException e){
-//            System.out.println(e.getMessage());
-//            System.out.println("Finalizando aplicación");
-//        }
-
-
-
-
-
 
     }
 

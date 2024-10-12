@@ -10,21 +10,28 @@ public class Calculo {
     ConsultaMoneda consulta = new ConsultaMoneda();
     Moneda moneda;
 
-    public void hacerCalculo(String base, String destino){
+    public void hacerCalculo(String base, String destino){ // Realiza cálculo de la conversión
         moneda = consulta.hacerConsulta(base, destino);
-        valorAConvertir = validarValorAConvertir();
-        valorFinal = valorAConvertir * moneda.conversion_rate();
-        System.out.println("El valor de " + valorAConvertir +" [" + moneda.base_code() + "] corresponde al valor final de =>> " +
-                valorFinal + " [" + moneda.target_code() + "]\n");
+
+        if(moneda.base_code() != null && moneda.target_code() != null){
+            valorAConvertir = validarValorAConvertir();
+            valorFinal = valorAConvertir * moneda.conversion_rate();
+            System.out.println("El valor de " + valorAConvertir +" [" + moneda.base_code() + "] corresponde al valor final de =>> " +
+                    valorFinal + " [" + moneda.target_code() + "]\n");
+        }
+        else{
+            System.out.println("No existen datos sobre las monedas solicitadas.");
+        }
+
     }
 
-    public void hacerCalculoEntrada(){
+    public void hacerCalculoEntrada(){ //Solicita datos al usuario para realizar conversión personalizada
         String codigoBase = "";
         String codigoDestino = "";
         do{
-            System.out.println("Ingrese la moneda base: ");
+            System.out.println("Ingrese el código de la moneda base: ");
             codigoBase = lectura.nextLine();
-            System.out.println("Ingrese la moneda destino: ");
+            System.out.println("Ingrese el código de la moneda destino: ");
             codigoDestino = lectura.nextLine();
 
             if(validarCodigoEntrada(codigoBase, codigoDestino)){
@@ -38,7 +45,7 @@ public class Calculo {
         }while(okEntrada == true);
     }
 
-    public double validarValorAConvertir() {
+    public double validarValorAConvertir() { // Verifica el tipo de entrada
         double valor = 0;
         do {
             do {
@@ -60,7 +67,7 @@ public class Calculo {
         return valor;
     }
 
-    public boolean validarCodigoEntrada(String codigoBase, String codigoDestino){
+    public boolean validarCodigoEntrada(String codigoBase, String codigoDestino){ //Verifica el código ingresado por el usuario
         codigoBase = codigoBase.trim();
         codigoDestino = codigoDestino.trim();
 
